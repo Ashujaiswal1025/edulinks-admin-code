@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import * as echarts from 'echarts';  // Import ECharts
 import bot from "../Images/bot.png";
 import parse from 'html-react-parser';
+import DOMPurify from 'dompurify';
+import he from 'he';
+
 
 function LeadsGenerated() {
 
@@ -82,7 +85,6 @@ function LeadsGenerated() {
         setActiveSection(name);
 
         // Log activeSection after the state is updated (via useEffect)
-        console.log('Active Section:', name);
 
         try {
             let url = '';
@@ -132,6 +134,16 @@ function LeadsGenerated() {
                 setCareerData(null);
                 setChatData(null);
             } else if (name === 'Chat with Me!') {
+                const html = data.fetchChat[0].messages[2].text;
+                function decodeHtmlEntities(encodedString) {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(encodedString, "text/html");
+                    return doc.documentElement.textContent;
+                  }
+                const decodedString = decodeHtmlEntities(html);
+                var strippedHtml = decodedString.replace(/<[^>]+>/g, '');
+
+                console.log('stripedHtml', strippedHtml);
                 setChatData(data.fetchChat[0]);
                 setUniversityData(null);
                 setCareerData(null);
@@ -543,23 +555,7 @@ function LeadsGenerated() {
                                                         padding: "12px", // Ensure sufficient padding
                                                     }}
                                                 >
-                                                    {parse(message.text, {
-                                                        replace: (domNode) => {
-                                                            if (domNode.name === "a") {
-                                                                return (
-                                                                    <a
-                                                                        href={domNode.attribs.href}
-                                                                        style={customStyles.link}
-                                                                        target="_blank"
-                                                                        rel="noopener noreferrer"
-                                                                        title={domNode.attribs.href}
-                                                                    >
-                                                                        {domNode.children[0].data}
-                                                                    </a>
-                                                                );
-                                                            }
-                                                        },
-                                                    })}
+                                                    {he.decode(message.text).replace(/<[^>]*>/g, '')}
                                                 </div>
                                                 {message.role === "user" && (
                                                     <div className="w-10 ml-3 h-10 rounded-full bg-eduTheme text-white font-bold text-lg flex justify-center items-center">

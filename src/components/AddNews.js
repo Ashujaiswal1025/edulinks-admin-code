@@ -33,7 +33,9 @@ function AddNews() {
         formData.append('content', content); // Append content to formData
 
         try {
-            const token = 'newsId'; // Replace with your actual token
+            const token = localStorage.getItem("authToken");
+            console.log('token', token);
+            ; // Replace with your actual token
 
             const response = await fetch('https://edulink-backend-code.vercel.app/v1/common/addNews', {
                 method: 'POST',

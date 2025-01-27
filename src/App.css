@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@font-face {
+  font-family: 'Adramalech';
+  src: url('./fonts/Adramalech Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddNews() {
     const [selectedImage, setSelectedImage] = useState(null);
     const [content, setContent] = useState(''); // To handle the content input
+    const navigate = useNavigate();
 
     // Handle the file selection
     const handleImageChange = (e) => {
@@ -46,12 +48,18 @@ function AddNews() {
             });
 
             const data = await response.json(); // Parse the response JSON
+            const newId = data.news._id
 
             if (data.success) {
                 alert('News added successfully!');
                 // Reset form fields after submission if needed
                 setSelectedImage(null);
                 setContent('');
+                navigate('/check-page/add-news/publish-news',{
+                    state:{
+                        newId
+                    }
+                })
             } else {
                 alert('Failed to add news.');
             }

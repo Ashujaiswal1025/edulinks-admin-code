@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as echarts from 'echarts';  // Import ECharts
 import bot from "../Images/bot.png";
-import parse from 'html-react-parser';
-import DOMPurify from 'dompurify';
+ import parse from 'html-react-parser';
+// import DOMPurify from 'dompurify';
 import he from 'he';
 
 
@@ -278,7 +278,7 @@ function LeadsGenerated() {
                                 <div key={index} className={` cursor-pointer my-1 pl-5 py-2 ${selectedUserIndex === index ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`} onClick={() => setSelectedUserIndex(index)} >
                                     <p className="text-xl font-medium">{user.name}</p>
                                     <p className="text-xl">{user.phoneNumber}</p>
-                                    <p className="text-lg">{user.email}</p>
+                                    <p className="text-lg text-wrap">{user.email}</p>
                                 </div>
                             ))
                         ) : (
@@ -292,8 +292,8 @@ function LeadsGenerated() {
 
                         {selectedUserIndex !== null && users[selectedUserIndex] && (
                             <>
-                                <div className={`w-full flex items-center mt-1 pl-5 py-0.5 ${activeSection === 'University/Course Shortlisting' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
-                                    <div className='w-full flex justify-center items-center gap-4'>
+                                <div className={`flex items-center justify-between flex-wrap md:flex-nowrap mt-1 pl-5 py-0.5 ${activeSection === 'University/Course Shortlisting' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
+                                    <div className='flex justify-center items-center gap-4'>
                                         <div className='w-5 min-w-5 h-5 bg-white'>
                                             {users[selectedUserIndex].isUniversityAssesmentUsed ? (
                                                 <TickMark />
@@ -305,7 +305,7 @@ function LeadsGenerated() {
                                     </div>
                                     <button className='bg-white lg:text-nowrap text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' onClick={() => showResult('University/Course Shortlisting')}>Explore &gt;</button>
                                 </div>
-                                <div className={`flex items-center justify-between mt-1 pl-5 py-0.5 ${activeSection === 'Career Pathway Test' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
+                                <div className={`flex items-center justify-between flex-wrap mt-1 pl-5 py-0.5 ${activeSection === 'Career Pathway Test' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
                                     <div className='flex justify-center items-center'>
                                         <div className='w-5 min-w-5 h-5 bg-white'>
                                             {users[selectedUserIndex].isCarrerPathwayAssesmentUsed ? (
@@ -318,7 +318,7 @@ function LeadsGenerated() {
                                     </div>
                                     <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' onClick={() => showResult('Career Pathway Test')}>Explore &gt;</button>
                                 </div>
-                                <div className={`flex items-center justify-between mt-1 pl-5 py-0.5 ${activeSection === 'Visa Query Solver' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
+                                <div className={`flex items-center justify-between flex-wrap mt-1 pl-5 py-0.5 ${activeSection === 'Visa Query Solver' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
                                     <div className='flex justify-center items-center'>
                                         <div className='w-5 min-w-5 h-5 bg-white'>
                                             {users[selectedUserIndex].isVisaQueryAssesmentUsed ? (
@@ -331,7 +331,7 @@ function LeadsGenerated() {
                                     </div>
                                     <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' onClick={() => showResult('Visa Query Solver')}>Explore &gt;</button>
                                 </div>
-                                <div className={`flex items-center justify-between mt-1 pl-5 py-0.5 ${activeSection === 'Chat with Me!' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
+                                <div className={`flex items-center justify-between flex-wrap mt-1 pl-5 py-0.5 ${activeSection === 'Chat with Me!' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
                                     <div className='flex justify-center items-center'>
                                         <div className='w-5 min-w-5 h-5 bg-white'>
                                             {users[selectedUserIndex].isChatBotUsed ? (
@@ -521,10 +521,15 @@ function LeadsGenerated() {
                                             className="mt-2 md:w-4/5 w-full flex justify-center items-center"
                                             style={{ height: '300px' }}  // Set default height
                                         ></div>
-
                                     ) : (
                                         <p>Loading...</p>
                                     )}
+                                    <h1 className='w-full text-xl text-center font-adramalech mt-12 px-3'>
+
+                                    </h1>
+                                    <p className='w-full text-base text-center font-robotoCondensed font-medium mt-5 px-3'>
+
+                                    </p>
 
                                 </div>
                             </>

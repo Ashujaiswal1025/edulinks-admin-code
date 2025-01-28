@@ -303,7 +303,7 @@ function LeadsGenerated() {
                                             <h2 className='w-4/5 text-xl font-medium'>University/Course Shortlisting</h2>
                                         </div>
                                     </div>
-                                    <button className='bg-white lg:text-nowrap text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' onClick={() => showResult('University/Course Shortlisting')}>Explore &gt;</button>
+                                    <button className='bg-white lg:text-nowrap text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' disabled={!users[selectedUserIndex].isUniversityAssesmentUsed} onClick={() => showResult('University/Course Shortlisting')}>Explore &gt;</button>
                                 </div>
                                 <div className={`flex items-center justify-between flex-wrap mt-1 pl-5 py-0.5 ${activeSection === 'Career Pathway Test' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
                                     <div className='flex justify-center items-center'>
@@ -316,7 +316,7 @@ function LeadsGenerated() {
                                             <h2 className='w-4/5 text-xl font-medium'>Career Pathway Test</h2>
                                         </div>
                                     </div>
-                                    <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' onClick={() => showResult('Career Pathway Test')}>Explore &gt;</button>
+                                    <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' disabled={!users[selectedUserIndex].isCareerPathwayAssesmentUsed} onClick={() => showResult('Career Pathway Test')}>Explore &gt;</button>
                                 </div>
                                 <div className={`flex items-center justify-between flex-wrap mt-1 pl-5 py-0.5 ${activeSection === 'Visa Query Solver' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
                                     <div className='flex justify-center items-center'>
@@ -329,7 +329,7 @@ function LeadsGenerated() {
                                             <h2 className='w-4/5 text-xl font-medium'>Visa Query Solver</h2>
                                         </div>
                                     </div>
-                                    <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' onClick={() => showResult('Visa Query Solver')}>Explore &gt;</button>
+                                    <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' disabled={!users[selectedUserIndex].isVisaQueryAssesmentUsed} onClick={() => showResult('Visa Query Solver')}>Explore &gt;</button>
                                 </div>
                                 <div className={`flex items-center justify-between flex-wrap mt-1 pl-5 py-0.5 ${activeSection === 'Chat with Me!' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
                                     <div className='flex justify-center items-center'>
@@ -342,7 +342,7 @@ function LeadsGenerated() {
                                             <h2 className='w-4/5 text-xl font-medium'>Chat with Me!</h2>
                                         </div>
                                     </div>
-                                    <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' onClick={() => showResult('Chat with Me!')}>Explore &gt;</button>
+                                    <button className='bg-white text-eduTheme mr-5 text-sm font-bold py-1 px-2.5 rounded' disabled={!users[selectedUserIndex].isChatBotUsed} onClick={() => showResult('Chat with Me!')}>Explore &gt;</button>
                                 </div>
                             </>
                         )}

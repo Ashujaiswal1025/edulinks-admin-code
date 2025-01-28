@@ -292,7 +292,7 @@ function LeadsGenerated() {
 
                         {selectedUserIndex !== null && users[selectedUserIndex] && (
                             <>
-                                <div className={`flex items-center justify-between flex-wrap md:flex-nowrap mt-1 pl-5 py-0.5 ${activeSection === 'University/Course Shortlisting' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
+                                <div className={`flex items-center justify-between flex-wrap lg:flex-nowrap mt-1 pl-5 py-0.5 ${activeSection === 'University/Course Shortlisting' ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}>
                                     <div className='flex justify-center items-center gap-4'>
                                         <div className='w-5 min-w-5 h-5 bg-white'>
                                             {users[selectedUserIndex].isUniversityAssesmentUsed ? (
@@ -491,7 +491,7 @@ function LeadsGenerated() {
                             </>
                         ) : visaQueryData && visaQueryData.selectedQuestion && visaQueryData.selectedQuestion.length > 0 && visaQueryData.percentageChance !== null ? (
                             <>
-                                <div className='w-full'>
+                                <div className='w-full pb-3'>
                                     <h1 className='text-xl lg:text-2xl font-robotoCondensed my-3 font-bold pl-8'>
                                         Questions
                                     </h1>
@@ -524,11 +524,11 @@ function LeadsGenerated() {
                                     ) : (
                                         <p>Loading...</p>
                                     )}
-                                    <h1 className='w-full text-xl text-center font-adramalech mt-12 px-3'>
-
+                                    <h1 className='w-full text-xl text-center font-adramalech my-2 px-8'>
+                                         {visaQueryData?.subject}
                                     </h1>
-                                    <p className='w-full text-base text-center font-robotoCondensed font-medium mt-5 px-3'>
-
+                                    <p className='w-full text-base text-center font-robotoCondensed font-medium px-5'>
+                                        {visaQueryData?.content}
                                     </p>
 
                                 </div>

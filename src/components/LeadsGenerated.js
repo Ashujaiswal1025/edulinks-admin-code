@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as echarts from 'echarts';  // Import ECharts
 import bot from "../Images/bot.png";
- import parse from 'html-react-parser';
+import parse from 'html-react-parser';
 // import DOMPurify from 'dompurify';
 import he from 'he';
 
@@ -29,6 +29,16 @@ function LeadsGenerated() {
             textDecoration: 'underline',
         },
     };
+
+    const handleUserSelect = (index) => {
+        setSelectedUserIndex(index);  // Update the selected user
+        setCareerData(null);           // Clear career-related data
+        setUniversityData(null);       // Clear university-related data
+        setVisaQueryData(null);        // Clear visa query-related data
+        setChatData(null);             // Clear chat data
+        setActiveSection(null)
+    };
+    
 
     const TickMark = () => {
         return (
@@ -139,7 +149,7 @@ function LeadsGenerated() {
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(encodedString, "text/html");
                     return doc.documentElement.textContent;
-                  }
+                }
                 const decodedString = decodeHtmlEntities(html);
                 var strippedHtml = decodedString.replace(/<[^>]+>/g, '');
 
@@ -275,7 +285,11 @@ function LeadsGenerated() {
                             <p className="text-red-500">Error: {error}</p> // Show error message if there's an error
                         ) : users.length > 0 ? (
                             users.map((user, index) => (
-                                <div key={index} className={` cursor-pointer my-1 pl-5 py-2 ${selectedUserIndex === index ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`} onClick={() => setSelectedUserIndex(index)} >
+                                <div
+                                    key={index}
+                                    className={`cursor-pointer my-1 pl-5 py-2 ${selectedUserIndex === index ? 'bg-eduTheme' : 'bg-eduThemeOPL'}`}
+                                    onClick={() => handleUserSelect(index)} // Clear data when a new user is selected
+                                >
                                     <p className="text-xl font-medium">{user.name}</p>
                                     <p className="text-xl">{user.phoneNumber}</p>
                                     <p className="text-lg text-wrap">{user.email}</p>
@@ -525,7 +539,7 @@ function LeadsGenerated() {
                                         <p>Loading...</p>
                                     )}
                                     <h1 className='w-full text-xl text-center font-adramalech my-2 px-8'>
-                                         {visaQueryData?.subject}
+                                        {visaQueryData?.subject}
                                     </h1>
                                     <p className='w-full text-base text-center font-robotoCondensed font-medium px-5'>
                                         {visaQueryData?.content}
